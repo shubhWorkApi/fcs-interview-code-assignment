@@ -40,3 +40,38 @@ A PostgreSQL container can be started using:
 
 ```sh
 docker run --name quarkus-postgres -e POSTGRES_USER=quarkus_test -e POSTGRES_PASSWORD=quarkus_test -e POSTGRES_DB=quarkus_test -p 15432:5432 -d postgres:16
+```   
+
+## Application Screenshots
+
+### Application Home
+
+![Application Home](docs/screenshots/01-application-home.png)
+
+### Swagger UI
+
+![Swagger UI](docs/screenshots/02-swagger-ui.png)
+
+### Product API
+
+![Product API](docs/screenshots/03-product-api-success.png)
+
+### Store API
+
+![Store API](docs/screenshots/04-store-api-success.png)
+
+### Warehouse API
+
+![Warehouse API](docs/screenshots/05-warehouse-api-success.png)
+
+### Fulfilment API
+
+![Fulfilment API](docs/screenshots/06-fulfilment-success.png)
+
+### Test Coverage
+
+![Test Coverage](docs/screenshots/07-test-coverage.png)
+
+### Test Results
+
+![Test Results](docs/screenshots/08-test-results.png)
