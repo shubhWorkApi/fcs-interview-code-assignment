@@ -1,5 +1,6 @@
-package com.fulfilment.application.monolith.fulfilment;
+package com.fulfilment.application.monolith.fulfilment.adapters.restapi;
 
+import com.fulfilment.application.monolith.fulfilment.application.StoreProductWarehouseService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;

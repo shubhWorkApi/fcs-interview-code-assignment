@@ -1,5 +1,7 @@
 package com.fulfilment.application.monolith.fulfilment;
 
+import com.fulfilment.application.monolith.fulfilment.adapters.database.StoreProductWarehouseRepository;
+import com.fulfilment.application.monolith.fulfilment.application.StoreProductWarehouseService;
 import com.fulfilment.application.monolith.products.Product;
 import com.fulfilment.application.monolith.products.ProductRepository;
 import com.fulfilment.application.monolith.warehouses.adapters.database.WarehouseRepository;

@@ -1,11 +1,13 @@
-package com.fulfilment.application.monolith.fulfilment;
+package com.fulfilment.application.monolith.fulfilment.adapters.database;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
+import com.fulfilment.application.monolith.fulfilment.domain.ports.StoreProductWarehouseStore;
 
 @ApplicationScoped
 public class StoreProductWarehouseRepository
-        implements PanacheRepository<StoreProductWarehouse> {
+        implements PanacheRepository<StoreProductWarehouse>,
+        StoreProductWarehouseStore {
 
     public long countWarehousesForStore(Long storeId) {
         return find(
@@ -41,5 +43,9 @@ public class StoreProductWarehouseRepository
                 storeId,
                 productId,
                 warehouseId) > 0;
+    }
+    @Override
+    public void save(StoreProductWarehouse association) {
+        persist(association);
     }
 }

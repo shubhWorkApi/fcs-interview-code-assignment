@@ -1,5 +1,8 @@
-package com.fulfilment.application.monolith.fulfilment;
+package com.fulfilment.application.monolith.fulfilment.application;
 
+import com.fulfilment.application.monolith.fulfilment.adapters.database.StoreProductWarehouse;
+import com.fulfilment.application.monolith.fulfilment.domain.ports.StoreProductWarehouseStore;
+import com.fulfilment.application.monolith.fulfilment.domain.validators.StoreProductWarehouseValidator;
 import com.fulfilment.application.monolith.products.Product;
 import com.fulfilment.application.monolith.products.ProductRepository;
 import com.fulfilment.application.monolith.stores.Store;
@@ -11,15 +14,18 @@ import jakarta.transaction.Transactional;
 @ApplicationScoped
 public class StoreProductWarehouseService {
 
-    private final StoreProductWarehouseRepository repository;
+    private final StoreProductWarehouseStore repository;
+    private final StoreProductWarehouseValidator validator;
     private final ProductRepository productRepository;
     private final WarehouseRepository warehouseRepository;
 
     public StoreProductWarehouseService(
-            StoreProductWarehouseRepository repository,
+            StoreProductWarehouseStore repository,
+            StoreProductWarehouseValidator validator,
             ProductRepository productRepository,
             WarehouseRepository warehouseRepository) {
         this.repository = repository;
+        this.validator = validator;
         this.productRepository = productRepository;
         this.warehouseRepository = warehouseRepository;
     }
@@ -45,38 +51,11 @@ public class StoreProductWarehouseService {
                     "Warehouse with id " + warehouseId + " does not exist.");
         }
 
-        if (repository.exists(storeId, productId, warehouseId)) {
-            throw new IllegalArgumentException(
-                    "This Store, Product and Warehouse association already exists.");
-        }
-
-        long warehousesForProductInStore =
-                repository.countWarehousesForStoreAndProduct(storeId, productId);
-
-        if (warehousesForProductInStore >= 2) {
-            throw new IllegalArgumentException(
-                    "A Product can be fulfilled by a maximum of 2 Warehouses per Store.");
-        }
-
-        long warehousesForStore =
-                repository.countWarehousesForStore(storeId);
-
-        if (warehousesForStore >= 3) {
-            throw new IllegalArgumentException(
-                    "A Store can be fulfilled by a maximum of 3 Warehouses.");
-        }
-
-        long productsInWarehouse =
-                repository.countProductsForWarehouse(warehouseId);
-
-        if (productsInWarehouse >= 5) {
-            throw new IllegalArgumentException(
-                    "A Warehouse can store a maximum of 5 Products.");
-        }
+        validator.validate(storeId, productId, warehouseId);
 
         StoreProductWarehouse association =
                 new StoreProductWarehouse(store, product, warehouse);
 
-        repository.persist(association);
+        repository.save(association);
     }
 }
