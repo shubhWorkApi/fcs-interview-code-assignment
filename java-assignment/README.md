@@ -89,25 +89,25 @@ fulfilment/
 ## Application Screenshots
 
 ### Application Home
-![Application Home](docs/screenshots/01-application-home.png)
+![Application Home](screenshots/01-application-home.png)
 
 ### Swagger UI
-![Swagger UI](docs/screenshots/02-swagger-ui.png)
+![Swagger UI](screenshots/02-swagger-ui.png)
 
 ### Product API
-![Product API](docs/screenshots/03-product-api-success.png)
+![Product API](screenshots/03-product-api-success.png)
 
 ### Store API
-![Store API](docs/screenshots/04-store-api-success.png)
+![Store API](screenshots/04-store-api-success.png)
 
 ### Warehouse API
-![Warehouse API](docs/screenshots/05-warehouse-api-success.png)
+![Warehouse API](screenshots/05-warehouse-api-success.png)
 
 ### Fulfilment API
-![Fulfilment API](docs/screenshots/06-fulfilment-success.png)
+![Fulfilment API](screenshots/06-fulfilment-success.png)
 
 ### Test Coverage
-![Test Coverage](docs/screenshots/07-test-coverage.png)
+![Test Coverage](screenshots/07-test-coverage.png)
 
 ### Test Results
-![Test Results](docs/screenshots/08-test-results.png)
+![Test Results](screenshots/08-test-results.png)
